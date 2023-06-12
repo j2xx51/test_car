@@ -108,7 +108,7 @@
             } else {
                 echo "การเพิ่มข้อมูลในตาราง car_rental ผิดพลาด: " . mysqli_error($conn);
             }
-            echo "<div class='alert alert-success'>ระบบทำการบันทึกการจองเรียบร้อบเเล้ว กรุณารอการติดต่อกลับ <a href='home.php'>หน้าหลัก</a></div>";
+            echo "<div class='alert alert-success'>ระบบทำการบันทึกการจองเรียบร้อบเเล้ว กรุณารอการติดต่อกลับ <a href='index.php'>หน้าหลัก</a></div>";
             echo "
             <div class='modal fade' id='myModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                 <div class='modal-dialog'>
@@ -144,7 +144,7 @@
                     <p>ขอบคุณที่ทำการจองรถกับเรา</p>
                     <p>เราจะติดต่อกลับโดยเร็วที่สุดเพื่อยืนยันการจองและแจ้งรายละเอียดเพิ่มเติม</p>
                     <div class='modal-footer'>
-                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' href='home.php'>ปิด</button>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal' href='index.php'>ปิด</button>
                     </div>
                     </div>
                 </div>

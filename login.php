@@ -29,7 +29,7 @@
                     if (password_verify($enteredPassword, $storedPassword)) {
                         session_start();
                         $_SESSION["email"] = $email;
-                        header("Location: home.php");
+                        header("Location: index.php");
                         exit();
                     } else {
                         echo "<div class='alert alert-danger '>รหัสผ่านไม่ถูกต้อง</div>";
@@ -74,7 +74,7 @@
                                     <h2>สมัครสมาชิก</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     <!-- <button type="button" class="btn btn-warning"  href="index.php">Register Now!</button> -->
-                                    <a class="btn btn-light"  href="index.php" >Register Now!</a>
+                                    <a class="btn btn-light"  href="SingUp.php" >Register Now!</a>
                                 </div>
                             </div>
                         </div>
