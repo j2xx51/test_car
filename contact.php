@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
 
 
@@ -62,7 +64,7 @@
         <section class="showcase mt-2">
             <div class="container-fluid p-0">
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white bg-dark showcase-img" style="background-image: url('image/contact1.jpg'); height: 300px;"></div>
+                    <div class="col-lg-6 order-lg-2 text-white bg-dark showcase-img" > <img src="image/contact1.jpg" width="100%" height="300px" alt="team member" class="img-full"></div>
                     <div class="col-lg-6 order-lg-1 showcase-text mt-5">
                         <figure class="text-center">
                             <blockquote class="blockquote">
@@ -77,7 +79,7 @@
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('image/contact2.png'); height: 300px;"></div>
+                    <div class="col-lg-6 text-white showcase-img" > <img src="image/contact2.jpg" width="100%" height="300px" alt="team member" class="img-full"></div>
                     <div class="col-lg-6 showcase-text mt-5">
                         <figure class="text-center">
                             <blockquote class="blockquote">
@@ -93,7 +95,8 @@
                 </div>
 
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('image/contact3.jpg'); height: 300px;"></div>
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img"><img src="image/A (1).jpg" width="100%" height="300px" alt="team member" class="img-full">
+                    </div>
                     <div class="col-lg-6 order-lg-1 showcase-text mt-5">
                         <figure class="text-center">
                             <blockquote class="blockquote">
@@ -115,14 +118,14 @@
                     <div class="col-8">
                         <div class="row">
                             <div class="col-lg-4 text-center">
-                                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                                    <img class="rounded-circle mb-3 " height="200" src="image/ninta.jpg" alt="..." />
+                                <div class="testimonial-item text-center mx-auto mb-5 mb-lg-0">
+                                    <img class="rounded-circle mb-3 " width="250" height="250" src="image/ninta.jpg" alt="..." />
                                     <h5>อำนาจ นินทะ (หน่อง )</h5>
                                     <p class="font-weight-light mb-0">"กรรมการผู้จัดการ Private Car Rent "</p>
                                 </div>
                             </div>
                             <div class="col-lg-8 text-start ">
-                                <div class="shadow-none p-3 mb-5 bg-light rounded ">
+                                <div class="shadow-none  mb-5 bg-light rounded ">
                                     <figure class="text-center">
                                         <blockquote class="blockquote">
                                             <p>ติดต่อเรา</p>
@@ -131,7 +134,7 @@
                                             <p class='card-text'>Tel : 084-7753409 </p>
                                             <p class='card-text'>LINE ID : amnat-04 </p>
                                             <p class='card-text'>Facebook : รถเช่าพร้อมคนขับ-อยุธยา Private Car Rent </p>
-                                            <p class='card-text'>Email : privatecarrent.ayutthaya@gmail.com </p>
+                                            <p class='card-text'>Email: privatecarrent.ayutthaya@gmail.com </p>
                                             <a href="https://www.facebook.com/CarRentCarNong"> <img src="image/facebook.png" width="30"></a>
                                             <a href="https://line.me/ti/p/Zu9X_iijE-"> <img src="image/line.png." width="30"></a>
                                             <a href="https://goo.gl/maps/4nnYCtg8kAPzQacn8" target="_blank"><img src="image/maps.png." width="30"></a>

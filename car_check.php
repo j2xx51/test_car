@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["email"])) {
-    header("Location: login.php");
+  header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -17,6 +17,8 @@ if (!isset($_SESSION["email"])) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
 </head>
 
 <body>
@@ -38,7 +40,7 @@ if (!isset($_SESSION["email"])) {
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">สถานะรถ</button>
       </li>
-     
+
     </ul>
 
     <div class="tab-content" id="myTabContent">
@@ -272,7 +274,7 @@ if (!isset($_SESSION["email"])) {
         </table>
       </div>
 
-  
+
     </div>
   </div>
 

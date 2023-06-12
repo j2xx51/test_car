@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
 </head>
 
@@ -43,7 +44,7 @@ FROM cars
 JOIN images ON cars.car_id = images.car_id
 WHERE cars.status_car = 'Ready'
 ORDER BY cars.car_id DESC
-LIMIT 3;
+LIMIT 4;
 ";
 
                 $result = mysqli_query($conn, $sql);
@@ -59,24 +60,24 @@ LIMIT 3;
 
 
                         <div class="col ">
-                                <div class="card h-100 ">
-                                    <!-- Product image-->
-                                    <img class="card-img-top" src='image\<?php echo $image_name; ?>' alt="..." />
-                                    <!-- Product details-->
-                                    <div class="card-body p-4">
-                                        <div class="text-center">
-                                            <!-- Product name-->
-                                            <h5 class="fw-bolder"><?php echo $car_brand, $car_model; ?></h5>
-                                            <!-- Product price-->
-                                            <?php echo $price; ?> /ต่อวัน
-                                        </div>
-                                    </div>
-                                    <!-- Product actions-->
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-warning mt-auto"  href="car_detail.php?car_id=<?php echo $car_id; ?>">ดูรายละเอียด</a></div>
+                            <div class="card h-100 ">
+                                <!-- Product image-->
+                                <img class="card-img-top" src='image\<?php echo $image_name; ?>' alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder"><?php echo $car_brand, $car_model; ?></h5>
+                                        <!-- Product price-->
+                                        <?php echo $price; ?> /ต่อวัน
                                     </div>
                                 </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-warning mt-auto" href="car_detail.php?car_id=<?php echo $car_id; ?>">ดูรายละเอียด</a></div>
+                                </div>
                             </div>
+                        </div>
                 <?php
                     }
                 } else {

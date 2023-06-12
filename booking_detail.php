@@ -63,7 +63,7 @@
                             <h2 class="mt-5">
                                 โทรติดต่อ<small class="text-success"><?php echo $row['phone_number'] ?></small>
                             </h2>
-                            <button class="btn btn-primary btn-rounded">Buy Now</button>
+
                         </div>
 
                         <h3 class="box-title mt-5">บันทึกสถานะ</h3>
@@ -191,8 +191,11 @@
     ?>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </div>
+
 </body>
 
 </html>
