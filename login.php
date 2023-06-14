@@ -48,7 +48,7 @@
       <div class="container mt-5" style="margin-right: auto; margin-left: auto; padding-right: 15px; padding-left: 15px; width: 100%;">
 
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col">
                     <div class="card-group mb-0">
                         <div class="card p-4">
                             <div class="card-body">
@@ -62,18 +62,18 @@
                                         <input type="password" placeholder="Enter Password:" name="password" class="form-control">
                                     </div>
                                     <div class="form-btn d-grid gap-2 col-6 mx-auto">
-                                        <input type="submit" value="Login" name="login" class="btn btn-warning">
+                                        <input type="submit" value="Login" name="login" class="btn "  style="background-color: #6699cc;">
                                     </div>
                                 </form>
                                 
                             </div>
                         </div>
-                        <div class="card text-white bg-warning py-5 d-md-down-none" style="width:44%">
+                        <div class="card text-white  py-5 d-md-down-none" style="width:100%; background-color: #6699cc;">
                             <div class="card-body text-center">
                                 <div>
                                     <h2>สมัครสมาชิก</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    <!-- <button type="button" class="btn btn-warning"  href="index.php">Register Now!</button> -->
+                                    <!-- <button type="button" class="btn "  href="index.php">Register Now!</button> -->
                                     <a class="btn btn-light"  href="SingUp.php" >Register Now!</a>
                                 </div>
                             </div>

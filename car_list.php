@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/scripts.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
 
 <body>
@@ -18,7 +20,7 @@
     <div style="font-family: 'Sarabun', sans-serif;">
 
         <!-- Header-->
-        <header class="bg-dark py-3">
+        <header class=" py-3"  style="background-color: #6699cc  ;">
             <div class="container px-4 px-lg-5 ">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">รถเช่าพร้อมคนขับ อยุธยา</h1>
@@ -27,7 +29,7 @@
                         <form method="GET" action="">
                             <div class="form-group">                           
                                 <input type="text" class="form-control" id="searchWord" name="search_word" placeholder="กรอกชื่อแบรนด์รถ รุ่นรถ ที่ต้องการค้นหา">
-                                <button type="submit" class="btn btn-warning mt-2 d-grid btn-sm gap-2 col-6 mx-auto">ค้นหา</button>
+                                <button type="submit" class="btn  mt-2 d-grid btn-sm gap-2 col-6 mx-auto" style="background-color: #f7d2db;">ค้นหา</button>
                             </div>
                         </form>
                     </div>
@@ -85,7 +87,7 @@
                                     </div>
                                     <!-- Product actions-->
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-warning mt-auto" href="car_detail.php?car_id=<?php echo $car_id; ?>">รายละเอียด</a></div>
+                                        <div class="text-white  text-center "><a class="btn  mt-auto" style=" background-color: #003b6d; color: #ffffff;" href="car_detail.php?car_id=<?php echo $car_id; ?>">รายละเอียด</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -100,12 +102,7 @@
             </div>
 
         </section>
-        <!-- Footer-->
        
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
     </div>
 </body>
 

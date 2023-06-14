@@ -1,9 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: login.php");
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,7 +89,7 @@ if (!isset($_SESSION["email"])) {
 
 
 
-        <form action="car_add.php" method="POST" enctype="multipart/form-data" class="container mt-4 text-bg-secondary " style="border-radius: 6px">
+        <form action="car_add.php" method="POST" enctype="multipart/form-data" class="container mt-4  " style="border-radius: 6px;  background-color: #bdbdbd;">
             <div class="mb-3">
                 <label for="car_brand" class="form-label">แบรนด์รถ:</label>
                 <input type="text" name="car_brand" class="form-control">
@@ -164,7 +159,7 @@ if (!isset($_SESSION["email"])) {
                 <input class="form-control" type="file" name="car_image" accept="image/*">
             </div>
 
-            <button type="submit" class="btn btn-warning" name="submit">บันทึก</button>
+            <button type="submit" class="btn "  style="background-color: #6699cc;" name="submit">บันทึก</button>
         </form>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>

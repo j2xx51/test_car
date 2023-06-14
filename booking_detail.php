@@ -40,21 +40,30 @@
     ?><div class="card">
                 <div class="card-body">
                     <h3 class="card-subtitle"><?php echo $row['customer_name'] ?></h3>
-                    <h6 class="card-subtitle"><?php echo $row['car_brand'] . ' ' . $row['car_model']; ?></h6>
+                    <h6 class="card-subtitle"><?php echo $row['car_brand'] . ' ' . $row['car_model'] ?></h6>
 
 
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-6">
                             <div class="white-box text-center">
-                                <img src="image/<?php echo $row['image_name']; ?>" class="img-responsive" width="430" height="400">
+                                <img src="image/<?php echo $row['image_name']; ?>" class="img-responsive" width=100% height="400">
                             </div>
 
                         </div>
                         <div class="col-lg-7 col-md-7 col-sm-6">
+
                             <h4 class="box-title mt-5">รายละเอียดการจอง</h4>
+                        
 
-                            <p><?php echo $row['car_brand'] . ' ' . $row['car_model'] . '  <br>สถานที่รับรถ:' .  $row['pickup_location'] . ' -> ' .  $row['destination_province'] . '  <br>เดินทางวันที่ ' .  $row['travel_date'] . ' -> ' .  $row['return_date'] . ' <br> เป็นจำนวน ' .  $row['num_days'] . ' วัน'; ?></p>
-
+                            <?php if ($row['b_status'] == 'เช่าขับเอง') : ?>
+                                <p>
+                                    <?php echo 'เลือกการจอง:' . $row['b_status'] . '<br>' . $row['car_brand'] . ' ' . $row['car_model'] . '<br>สถานที่รับรถ:' . $row['pickup_location'] . '<br> สถานที่คืนรถ: ' . $row['return_location'] . ' <br>ปลายทาง: ' . $row['destination_province'] . '<br>เดินทางวันที่ ' . $row['travel_date'] . ' -> ' . $row['return_date'] . '<br>เป็นจำนวน ' . $row['num_days'] . ' วัน'; ?>
+                                </p>
+                            <?php elseif ($row['b_status'] == 'เช่าพร้อมคนขับ') : ?>
+                                <p>
+                                    <?php echo 'เลือกการจอง:' . $row['b_status'] . '<br>' . $row['car_brand'] . ' ' . $row['car_model'] . '<br>สถานที่นัดรับ:' . $row['pickup_location'] . '<br>เดินทางวันที่ :' . $row['travel_date'] . ' เวลา ' . $row['travel_time'] . '<br>เพื่อเดินทางไปยัง :' . $row['destination_province'] . '<br>เป็นจำนวน ' . $row['num_days'] . ' วัน'; ?>
+                                </p>
+                            <?php endif; ?>
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-check text-success"></i>ลูกค้าทำการจองรถเข้ามาในระบบแล้วครับ กรุณาช่วยติดต่อกลับเพื่อดำเนินการต่อไปครับ </li>
                                 <li><i class="fa fa-check text-success"></i>โปรดตรวจสอบรายละเอียดการจองรถที่เราได้รับจากลูกค้าในระบบของเรา</li>
@@ -65,6 +74,7 @@
                             </h2>
 
                         </div>
+                       
 
                         <h3 class="box-title mt-5">บันทึกสถานะ</h3>
                         <div class="card p-3 " style="box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;">

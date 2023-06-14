@@ -1,23 +1,5 @@
-<?php
-session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: login.php");
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
-<body>
-
-</body>
-
-</html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +20,7 @@ if (!isset($_SESSION["email"])) {
             <div class="d-grid gap-2 col-6 mx-auto">
                 <form method="GET" action="">
                     <div class="form-group">
-                        <label for="searchWord">ค้นหาตามแบรนด์รถ:</label>
+                        <label for="searchWord">ค้นหารายการเช่ารถ:</label>
                         <input type="text" class="form-control" id="searchWord" name="search_word" placeholder="กรอกชื่อแบรนด์รถ รุ่นรถ ชื่อลูกค้า ที่ต้องการค้นหา">
                         <button type="submit" class="btn btn-primary mt-2 d-grid btn-sm gap-2 col-6 mx-auto">ค้นหา</button>
                     </div>

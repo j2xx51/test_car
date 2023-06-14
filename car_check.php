@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION["email"])) {
-  header("Location: login.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +11,6 @@ if (!isset($_SESSION["email"])) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/scripts.js"></script>
 </head>
 
@@ -25,7 +18,7 @@ if (!isset($_SESSION["email"])) {
   <?php include 'navbar.php'; ?>
   <div class="container py-2">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <a class="btn btn-warning " href="car_search.php">ค้นหารายการเช่ารถ</a>
+      <a class="btn "  style="background-color: #6699cc;" href="car_search.php">ค้นหารายการเช่ารถ</a>
 
     </div>
 
@@ -54,6 +47,7 @@ if (!isset($_SESSION["email"])) {
               <th scope="col">รถ</th>
               <th scope="col">วันที่</th>
               <th scope="col">สถานะ</th>
+              <th scope="col">เพิ่มเติม</th>
             </tr>
           </thead>
           <tbody>
@@ -74,15 +68,14 @@ if (!isset($_SESSION["email"])) {
                 $car_brand = $row['car_brand'];
                 $car_model = $row['car_model'];
                 $customer_name = $row["customer_name"];
-                $travel_date = $row['travel_date'];
-                $return_date = $row["return_date"];
                 $status = $row["status"];
+                $rental_date = $row["rental_date"];
 
                 echo '<tr>';
                 echo '<th scope="row">' . $i++ . '</th>';
                 echo '<td>' . $customer_name . '</td>';
                 echo '<td>' . $car_brand . ' ' . $car_model . '</td>';
-                echo '<td>' . $travel_date . ' ถึง ' . $return_date . '</td>';
+                echo '<td>' . $rental_date . '</td>';
                 echo '<td>';
                 if ($status == 1) {
                   echo '<span class="badge text-bg-warning ">รอการยืนยัน</span>';
@@ -96,7 +89,15 @@ if (!isset($_SESSION["email"])) {
 
                 echo '</td>'; ?>
                 <td>
-                  <a class="btn btn-warning mt-auto" href="booking_detail.php?bookings_id=<?php echo $bookings_id; ?>">ดูรายละเอียด</a>
+                  <div class="d-grid gap-2 d-md-flex">
+                    <a class="btn btn-warning me-md-2" href="booking_detail.php?bookings_id=<?php echo $bookings_id; ?>">ดูรายละเอียด</a>
+                    <form action="" method="POST">
+                      <input type="hidden" name="bookings_id" value="<?php echo $row['bookings_id']; ?>">
+                      <button class="btn btn-outline-warning" type="submit" name="delete_data" value="Submit">ลบ</button>
+                    </form>
+                  </div>
+
+
 
                 </td><?php
                       echo '</tr>';
@@ -105,10 +106,32 @@ if (!isset($_SESSION["email"])) {
                     echo '<tr><td colspan="5">No data found.</td></tr>';
                   }
                       ?>
+            <?php
+            if (isset($_POST['delete_data'])) {
+              $bookings_id = $_POST['bookings_id'];
+
+              // ลบข้อมูลในตาราง car_rental
+              $sql = "DELETE FROM car_rental WHERE bookings_id = $bookings_id";
+              if ($conn->query($sql) === TRUE) {
+                echo "";
+              } else {
+                echo "เกิดข้อผิดพลาดในการลบข้อมูลในตาราง car_rental: ";
+              }
+
+              // ลบข้อมูลในตาราง booking
+              $sql = "DELETE FROM bookings WHERE id = $bookings_id";
+              if ($conn->query($sql) === TRUE) {
+                echo "<div class='alert alert-danger' role='alert'>
+                                    ลบข้อมูลเรียบร้อย
+                                  </div>";
+              } else {
+                echo "เกิดข้อผิดพลาดในการลบข้อมูลในตาราง booking: ";
+              }
+            }
+            ?>
           </tbody>
         </table>
       </div>
-
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <h3>ยืนยันการเช่า</h3>
         <table class="table">
@@ -146,12 +169,11 @@ if (!isset($_SESSION["email"])) {
                 $travel_date = $row['travel_date'];
                 $return_date = $row["return_date"];
                 $status = $row["status"];
-
                 echo '<tr>';
                 echo '<th scope="row">' . $i++ . '</th>';
                 echo '<td>' . $customer_name . '</td>';
                 echo '<td>' . $car_brand . ' ' . $car_model . '</td>';
-                echo '<td>' . $travel_date . ' ถึง ' . $return_date . '</td>';
+                echo '<td>' . $rental_date . '</td>';
                 echo '<td>';
                 if ($status == 1) {
                   echo '<form method="POST" action="">';
@@ -191,13 +213,9 @@ if (!isset($_SESSION["email"])) {
               echo '<tr><td colspan="5">No data found.</td></tr>';
             }
             ?>
-
           </tbody>
         </table>
       </div>
-
-
-
       <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <h3>เปลี่ยนสถานะรถ</h3>
         <table class="table table-bordered border-primary text-center">
@@ -268,19 +286,12 @@ if (!isset($_SESSION["email"])) {
             } else {
               echo '<tr><td colspan="5">No data found.</td></tr>';
             }
-
             ?>
           </tbody>
         </table>
       </div>
-
-
     </div>
   </div>
-
-
-
-  <!-- Link to Bootstrap JS -->
 
 </body>
 

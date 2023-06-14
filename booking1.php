@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/scripts.js"></script>
-  
+    <script src="js/scripts.js"></script>
+
 </head>
 <?php include 'navbar.php'; ?>
 <div class="container" style="font-family: 'Sarabun', sans-serif;">
@@ -26,38 +25,39 @@
     if (isset($_POST['submit'])) {
         $customerName = $_POST['customer_name'];
         $phoneNumber = $_POST['phone_number'];
+        $lineId = $_POST['line_id'];
         $travelDate = $_POST['travel_date'];
         $returnDate = $_POST['return_date'];
         $pickupLocation = $_POST['pickup_location'];
         $destinationProvince = $_POST['destination_province'];
         $carID = $_POST['car_id'];
-        $passengerCount = $_POST['passenger_count'];
+        $returnLocation = $_POST['return_location'];
         $numDays = floor((strtotime($returnDate) - strtotime($travelDate)) / (60 * 60 * 24));
-    
+
         $errors = array();
-    
-        if (empty($customerName) || empty($phoneNumber) || empty($travelDate) || empty($returnDate) || empty($pickupLocation) || empty($destinationProvince) || empty($passengerCount)) {
+
+        if (empty($customerName) || empty($phoneNumber) ||empty($lineId) || empty($travelDate) || empty($returnDate) || empty($pickupLocation) || empty($destinationProvince) || empty($returnLocation)) {
             $errors[] = "กรุณากรอกข้อมูลให้ครบ";
         }
-    
+
         if (strtotime($travelDate) > strtotime($returnDate)) {
             $errors[] = "กรุณากรอกวันที่ให้ถูกต้อง";
         }
-    
+
         // เรียกดูค่า car_brand, car_model จากตาราง cars โดยใช้ค่า car_id
         require_once "database.php";
         $sql = "SELECT car_brand, car_model, price FROM cars WHERE car_id = ?";
         $stmt = mysqli_stmt_init($conn);
         $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
-    
+
         if ($prepareStmt) {
             mysqli_stmt_bind_param($stmt, "s", $carID);
             mysqli_stmt_execute($stmt);
-    
+
             // ตรวจสอบจำนวนแถวที่ผ่านการเลือกข้อมูลมาเพียงพอหรือไม่
             mysqli_stmt_store_result($stmt);
             $numRows = mysqli_stmt_num_rows($stmt);
-    
+
             if ($numRows > 0) {
                 mysqli_stmt_bind_result($stmt, $carBrand, $carModel, $price);
                 mysqli_stmt_fetch($stmt);
@@ -67,9 +67,9 @@
         } else {
             echo "Error: " . mysqli_error($conn);
         }
-    
+
         if (empty($errors)) {
-            addBooking($customerName, $phoneNumber, $travelDate, $returnDate, $pickupLocation, $destinationProvince, $carID, $passengerCount, $carBrand, $carModel, $numDays, $price);
+            addBooking($customerName, $phoneNumber, $travelDate, $returnDate, $pickupLocation, $destinationProvince, $carID, $returnLocation, $carBrand, $carModel, $numDays, $price,$lineId);
         } else {
             // Display error messages
             foreach ($errors as $error) {
@@ -77,24 +77,25 @@
             }
         }
     }
-    
 
-    function addBooking($customerName, $phoneNumber, $travelDate, $returnDate, $pickupLocation, $destinationProvince, $carID, $passengerCount, $carBrand, $carModel, $numDays, $price)
+
+    function addBooking($customerName, $phoneNumber, $travelDate, $returnDate, $pickupLocation, $destinationProvince, $carID, $returnLocation, $carBrand, $carModel, $numDays, $price,$lineId)
     {
         global $conn;
         $price_c =  ($numDays * $price);
+        $status_b='เช่าขับเอง';
 
 
         // ฟอร์ม SQL สำหรับเพิ่มข้อมูลในตาราง bookings
-        $sql = "INSERT INTO bookings (customer_name, phone_number, travel_Date, return_date, pickup_location, destination_province, car_id, passenger_count, car_brand, car_model,num_days)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+        $sql = "INSERT INTO bookings (customer_name, phone_number, travel_Date, return_date, pickup_location, destination_province, car_id, return_location, car_brand, car_model,num_days,line_id,b_status)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
 
         // ส่งคำสั่ง SQL ไปที่ฐานข้อมูล
         $stmt = mysqli_stmt_init($conn);
         $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
 
         if ($prepareStmt) {
-            mysqli_stmt_bind_param($stmt, "sssssssssss", $customerName, $phoneNumber, $travelDate, $returnDate, $pickupLocation, $destinationProvince, $carID, $passengerCount, $carBrand, $carModel, $numDays);
+            mysqli_stmt_bind_param($stmt, "sssssssssssss", $customerName, $phoneNumber, $travelDate, $returnDate, $pickupLocation, $destinationProvince, $carID, $returnLocation, $carBrand, $carModel, $numDays,$lineId,$status_b);
             mysqli_stmt_execute($stmt);
             $bookingID = mysqli_insert_id($conn);
             $status = 1;
@@ -124,7 +125,7 @@
                         <div class='card'>
   <div class='card-body'>
   <h5 class='card-title'>คุณลูกค้า : $customerName </h5>
-  <p class='card-text'>ทำการจองรถ $carBrand $carModel <br> สถานที่รับรถ: $pickupLocation -> $destinationProvince  <br>เดินทางวันที่ $travelDate -> $returnDate เป็นจำนวน $numDays วัน </p>
+  <p class='card-text'>ทำการจองรถ $carBrand $carModel <br> สถานที่รับรถ: $pickupLocation <br>สถานที่คืนรถ: $returnLocation <br>ปลายทาง: $destinationProvince <br>เดินทางวันที่ $travelDate -> $returnDate เป็นจำนวน $numDays วัน </p>
   <p class='card-text'><small class='text-muted'>ราคา:$price /ต่อวัน จำนวน:$numDays วัน </small>  รวมราคาทั้งหมด:$price_c</p>
   </div>
 </div>
@@ -164,10 +165,10 @@
     }
     ?>
 
-<h1 class="font-weight-light">บริษัท รถเช่าพร้อมคนขับ อยุธยา (Private Car Rent) จำกัด</h1>
-                    <p>"เปิดประสบการณ์ใหม่กับบริการรถเช่าพร้อมคนขับอยุธยา ที่จะทำให้คุณเดินทางไปถึงจุดหมายด้วยความสะดวกสบายและความปลอดภัยที่ไม่เคยมีมาก่อน ร่วมกับ Private Car Rent และสัมผัสประสบการณ์ที่ดีที่สุดในการเดินทางของคุณ"</p>
-                   
-    <form action="" method="POST" enctype="multipart/form-data" class="container mt-4 text-bg-secondary " style="border-radius: 6px">
+    <h1 class="font-weight-light">บริษัท รถเช่าพร้อมคนขับ อยุธยา (Private Car Rent) จำกัด</h1>
+    <p>"เปิดประสบการณ์ใหม่กับบริการรถเช่าพร้อมคนขับอยุธยา ที่จะทำให้คุณเดินทางไปถึงจุดหมายด้วยความสะดวกสบายและความปลอดภัยที่ไม่เคยมีมาก่อน ร่วมกับ Private Car Rent และสัมผัสประสบการณ์ที่ดีที่สุดในการเดินทางของคุณ"</p>
+    <h4 class="font-weight-light">บริการ: เช่าขับเอง</h4>
+    <form action="" method="POST" enctype="multipart/form-data" class="container mt-4 " style="border-radius: 6px; background-color: #bdbdbd;">
         <div class="mb-3">
             <label class="form-label" for="customer_name">ชื่อลูกค้า:</label>
             <input type="text" name="customer_name" class="form-control">
@@ -175,6 +176,10 @@
         <div class="mb-3">
             <label class="form-label" for="phone_number">เบอร์โทรศัพท์:</label>
             <input type="tel" name="phone_number" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="line_id">LINE id:</label>
+            <input type="text" name="line_id" class="form-control">
         </div>
         <div class="row">
             <div class="col mb-3">
@@ -187,25 +192,27 @@
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="pickup_location">จุดรับรถ:</label>
+            <label class="form-label" for="pickup_location">จุดรับรถ(สถานที่):</label>
             <input type="text" name="pickup_location" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="return_location">จุดคืนรถ(สถานที่):</label>
+            <input type="text" name="return_location" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label" for="destination_province">จังหวัดที่ต้องการเดินทาง:</label>
             <input type="text" name="destination_province" class="form-control">
         </div>
-      
 
-        <div class="mb-3">
-            <label class="form-label" for="passenger_count">จำนวนคน:</label>
-            <input type="number" name="passenger_count" class="form-control">
-        </div>
+
+      
         <div class="">
             <label class="form-label" for="car_id"></label>
-            <input type="hidden" name="car_id"  value="<?php echo isset($car_id) ? $car_id : ''; ?>">
+            <input type="hidden" name="car_id" value="<?php echo isset($car_id) ? $car_id : ''; ?>">
         </div>
         <div>
-            <button type="submit" class="btn btn-warning mb-2" name="submit">บันทึก</button>
+            <button type="submit" class="btn  mb-2"  style="background-color: #003b6d; color: #ffffff;" name="submit">บันทึก</button>
         </div>
     </form>
+
 </html>

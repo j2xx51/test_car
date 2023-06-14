@@ -64,7 +64,7 @@
         <section class="showcase mt-2">
             <div class="container-fluid p-0">
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white bg-dark showcase-img" > <img src="image/contact1.jpg" width="100%" height="300px" alt="team member" class="img-full"></div>
+                    <div class="col-lg-6 order-lg-2 text-white bg-dark showcase-img"> <img src="image/contact1.jpg" width="100%" height="300px" alt="team member" class="img-full"></div>
                     <div class="col-lg-6 order-lg-1 showcase-text mt-5">
                         <figure class="text-center">
                             <blockquote class="blockquote">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6 text-white showcase-img" > <img src="image/contact2.jpg" width="100%" height="300px" alt="team member" class="img-full"></div>
+                    <div class="col-lg-6 text-white showcase-img"> <img src="image/contact2.jpg" width="100%" height="300px" alt="team member" class="img-full"></div>
                     <div class="col-lg-6 showcase-text mt-5">
                         <figure class="text-center">
                             <blockquote class="blockquote">
@@ -114,19 +114,15 @@
             <div class="container ">
                 <div class="row align-items-center">
                     <div class="col">
-                    </div>
-                    <div class="col-8">
+                
+                
                         <div class="row">
-                            <div class="col-lg-4 text-center">
-                                <div class="testimonial-item text-center mx-auto mb-5 mb-lg-0">
-                                    <img class="rounded-circle mb-3 " width="250" height="250" src="image/ninta.jpg" alt="..." />
-                                    <h5>อำนาจ นินทะ (หน่อง )</h5>
-                                    <p class="font-weight-light mb-0">"กรรมการผู้จัดการ Private Car Rent "</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 text-start ">
+
+                            <div class="text-center ">
                                 <div class="shadow-none  mb-5 bg-light rounded ">
                                     <figure class="text-center">
+                                        <h5>อำนาจ นินทะ (หน่อง )</h5>
+                                        <p class="font-weight-light mb-0">"กรรมการผู้จัดการ Private Car Rent "</p>
                                         <blockquote class="blockquote">
                                             <p>ติดต่อเรา</p>
                                         </blockquote>
@@ -135,20 +131,19 @@
                                             <p class='card-text'>LINE ID : amnat-04 </p>
                                             <p class='card-text'>Facebook : รถเช่าพร้อมคนขับ-อยุธยา Private Car Rent </p>
                                             <p class='card-text'>Email: privatecarrent.ayutthaya@gmail.com </p>
+                                            <a href="tel:0847753409">
+                                                <img src="image/call.png" width="30" alt="Call">
+                                            </a>
                                             <a href="https://www.facebook.com/CarRentCarNong"> <img src="image/facebook.png" width="30"></a>
                                             <a href="https://line.me/ti/p/Zu9X_iijE-"> <img src="image/line.png." width="30"></a>
                                             <a href="https://goo.gl/maps/4nnYCtg8kAPzQacn8" target="_blank"><img src="image/maps.png." width="30"></a>
-
-
-
                                         </figcaption>
                                     </figure>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                    </div>
+                   
                 </div>
             </div>
         </section>

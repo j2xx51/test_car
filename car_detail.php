@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/scripts.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
 
 
@@ -60,7 +60,9 @@
                                     <h2 class="mt-5">
                                         <small class="text-success"><?php echo $row['price'] ?></small> / ต่อวัน
                                     </h2>
-                                    <a class="btn btn-warning" href="booking.php?car_id=<?php echo $car_id; ?>" role="button">จอง</a>
+                                    <a class="btn "  style="background-color: #6699cc;" href="booking1.php?car_id=<?php echo $car_id; ?>&bookings_type=1" role="button">เช่าขับเอง</a>
+
+                                    <a class="btn "   style="background-color: #003b6d; color: #ffffff;" href="booking2.php?car_id=<?php echo $car_id; ?>&bookings_type=2" role="button">เช่าพร้อมคนขับ</a>
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12">

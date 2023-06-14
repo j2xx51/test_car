@@ -13,10 +13,10 @@
 
 <body>
     <div style="font-family: 'Sarabun', sans-serif;">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-md navbar-dark "  style="background-color: #6699cc ;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">
-                    <img width="100%" height="50" src="image/Corvette-logo.png" alt="Navbar Logo">
+                    <img width="100%" height="70" src="image/Corvette-logo.png" alt="Navbar Logo">
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,11 +27,12 @@
                             <a class="nav-link" aria-current="page" href="car_list.php">รายการรถ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page"  href="contact.php">เกี่ยวกับเรา</a>
+                            <a class="nav-link" aria-current="page" href="contact.php">เกี่ยวกับเรา</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page"  href="condition.php">ข้อตกลง</a>
+                            <a class="nav-link" aria-current="page" href="condition.php">ข้อตกลง</a>
                         </li>
+
                         <?php
                         session_start();
                         if (isset($_SESSION["email"])) {
@@ -44,16 +45,26 @@
                             <a class="nav-link" href="car_check.php">เช็คยอด</a>
                         </li> 
                     </ul>';
-                            echo '<a class="btn btn-outline-warning" href="logout.php" role="button">ออกจากระบบ</a>';
+                            echo ' <a href="https://line.me/ti/p/Zu9X_iijE-">
+                            <img src="image/line.png" width="30" style="margin-right: 5px;" alt="Line">
+                        </a>
+                        <a href="tel:0847753409">
+                            <img src="image/call.png" width="30" style="margin-right: 5px;" alt="Call">
+                        </a>
+                        <a class="btn btn-outline-warning" href="logout.php" role="button">ออกจากระบบ</a>
+                        ';
                         } else {
                             echo '
                         </ul>
+                        <a href="https://line.me/ti/p/Zu9X_iijE-"> <img src="image/line.png."style="margin-right: 5px;" width="30"></a>
+                        <a href="tel:0847753409"><img src="image/call.png" style="margin-right: 5px;" width="30" alt="Call"></a>
                         <a href="login.php">
                             <img src="image/welcome.png" alt="ไอคอน Admin" width="70">
                         </a>
                     ';
                         }
                         ?>
+
                 </div>
             </div>
         </nav>
