@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หน้าหลัก</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
+
 <?php include 'navbar.php'; ?>
 <div class="container" style="font-family: 'Sarabun', sans-serif;">
     <?php
@@ -108,7 +110,6 @@
                         </div>
                         <?php
                         if (isset($_POST['submit'])) {
-
                             $bookingID = $_POST['bookingID'];
                             $note = $_POST['note'];
                             $status = $_POST['status'];
@@ -117,16 +118,28 @@
                             $currentDateTime = date("Y-m-d H:i:s");
 
                             // ตรวจสอบความถูกต้องของข้อมูล
-                            if ($note != "" && $status != "เลือกสถานะ") {
+                            if ( $status != "เลือกสถานะ") {
                                 // เพิ่มข้อมูลใหม่
-                                $carRentalSql = "INSERT INTO car_rental (bookings_id, customer_name, car_id, status, rental_date,note) VALUES (?, ?, ?, ?, ?,?)";
+                                $carRentalSql = "INSERT INTO car_rental (bookings_id, customer_name, car_id, status, rental_date, note) VALUES (?, ?, ?, ?, ?, ?)";
                                 $carRentalStmt = mysqli_stmt_init($conn);
                                 $prepareCarRentalStmt = mysqli_stmt_prepare($carRentalStmt, $carRentalSql);
 
                                 if ($prepareCarRentalStmt) {
                                     mysqli_stmt_bind_param($carRentalStmt, "ississ", $bookingID, $customerName, $carID, $status, $currentDateTime, $note);
                                     mysqli_stmt_execute($carRentalStmt);
-                                    echo "<div class='alert alert-success'>เพิ่มข้อมูลสำเร็จ </div>";
+                                    echo "<div class='alert alert-success'>เพิ่มข้อมูลสำเร็จ</div>";
+
+                                    // อัปเดตสถานะการจองรถในตาราง "bookings"
+                                    $updateBookingSql = "UPDATE bookings SET status_rental = ? WHERE id = ?";
+                                    $updateBookingStmt = mysqli_stmt_init($conn);
+                                    $prepareUpdateBookingStmt = mysqli_stmt_prepare($updateBookingStmt, $updateBookingSql);
+
+                                    if ($prepareUpdateBookingStmt) {
+                                        mysqli_stmt_bind_param($updateBookingStmt, "si", $status, $bookingID);
+                                        mysqli_stmt_execute($updateBookingStmt);
+                                    } else {
+                                        echo "เกิดข้อผิดพลาดในการอัปเดตสถานะการจองรถ: " . mysqli_error($conn);
+                                    }
                                 } else {
                                     echo "เกิดข้อผิดพลาดในการเพิ่มข้อมูล: " . mysqli_error($conn);
                                 }
@@ -134,6 +147,7 @@
                                 echo "กรุณากรอกข้อมูลให้ถูกต้อง";
                             }
                         }
+
                         ?>
 
                     </div>
@@ -162,10 +176,12 @@
                                                     if ($status == "1") {
                                                         echo "<p class='text-success '>รอยืนยัน</p>";
                                                     } elseif ($status == "2") {
-                                                        echo "<p class='text-success '>รอรับรถ</p>";
+                                                        echo "<p class='text-success '>รอแอดมิดมากดยืนยัน</p>";
                                                     } elseif ($status == "3") {
                                                         echo "<p class='text-success '>เช่าอยู่</p>";
                                                     } elseif ($status == "4") {
+                                                        echo "<p class='text-success '>แอดมินเปลี่ยนสถานะ</p>";
+                                                    } elseif ($status == "5") {
                                                         echo "<p class='text-success '>สิ้นสุดการเช่า</p>";
                                                     }
                                                     ?><br>
@@ -204,9 +220,7 @@
     ?>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+
 </div>
 
 </body>

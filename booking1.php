@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หน้าหลัก</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
-
 </head>
+
 <?php include 'navbar.php'; ?>
 <div class="container" style="font-family: 'Sarabun', sans-serif;">
     <?php
@@ -84,6 +83,7 @@
         global $conn;
         $price_c =  ($numDays * $price);
         $status_b='เช่าขับเอง';
+        
 
 
         // ฟอร์ม SQL สำหรับเพิ่มข้อมูลในตาราง bookings
