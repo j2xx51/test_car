@@ -73,9 +73,14 @@
                                 <li><i class="fa fa-check text-success"></i>โปรดตรวจสอบรายละเอียดการจองรถที่เราได้รับจากลูกค้าในระบบของเรา</li>
                                 <li><i class="fa fa-check text-success"></i>จากนั้นทำการยืนยันการจอง</li>
                             </ul>
-                            <h2 class="mt-5">
-                                โทรติดต่อ<small class="text-success"><?php echo $row['phone_number'] ?></small>
-                            </h2>
+                            <h4 class="mt-5">
+                                โทรติดต่อ: <small class="text-success"><?php echo $row['phone_number'] ?></small><br>
+                                <?php if (empty($row['line_id'])) : ?>
+                                    LINE: ไม่มี
+                                <?php else : ?>
+                                    LINE: <small class="text-success"><?php echo $row['line_id'] ?></small>
+                                <?php endif; ?>
+                            </h4>
 
                         </div>
 
@@ -118,7 +123,7 @@
                             $currentDateTime = date("Y-m-d H:i:s");
 
                             // ตรวจสอบความถูกต้องของข้อมูล
-                            if ( $status != "เลือกสถานะ") {
+                            if ($status != "เลือกสถานะ") {
                                 // เพิ่มข้อมูลใหม่
                                 $carRentalSql = "INSERT INTO car_rental (bookings_id, customer_name, car_id, status, rental_date, note) VALUES (?, ?, ?, ?, ?, ?)";
                                 $carRentalStmt = mysqli_stmt_init($conn);

@@ -39,9 +39,11 @@
             $errors[] = "กรุณากรอกข้อมูลให้ครบ";
         }
 
-        if (strtotime($travelDate) > strtotime($returnDate)) {
+        $currentDate = date("Y-m-d"); // วันที่ปัจจุบัน
+        if (strtotime($travelDate) > strtotime($returnDate) || strtotime($travelDate) < strtotime($currentDate)) {
             $errors[] = "กรุณากรอกวันที่ให้ถูกต้อง";
         }
+        
 
         // เรียกดูค่า car_brand, car_model จากตาราง cars โดยใช้ค่า car_id
         require_once "database.php";

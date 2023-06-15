@@ -57,7 +57,7 @@
                           $return_date = $row["return_date"];
                           $status_rental = $row["status_rental"];
                           $b_status = $row["b_status"];
-                          
+
                           echo '<tr>';
                           echo '<th scope="row">' . $i++ . '</th>';
                           echo '<td>' . $customer_name . '</td>';
@@ -80,7 +80,7 @@
 
                         if (isset($_POST['confirm_rental'])) {
                           $bookingID = $_POST['bookingID'];
-                          $status = 2;
+                          $status = 1;
                           $carID = $_POST['carID'];
                           $customerName = $_POST['customerName'];
                           $currentDateTime = date("Y-m-d H:i:s");
