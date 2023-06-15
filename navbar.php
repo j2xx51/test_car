@@ -41,9 +41,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="car_add.php">เพิ่มรถ</a>
                         </li> 
-                        <li class="nav-item">
-                            <a class="nav-link" href="car_check.php">เช็คยอด</a>
-                        </li> 
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="car_check.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          เช็คยอด
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="car_check.php">รายการรอยืนยัน</a></li>
+                             <li><a class="dropdown-item" href="#">รายการสะสม</a></li>
+                          <li><a class="dropdown-item" href="#">จัดการสถานะรถ</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="car_search.php">ค้นหาประวัติ</a></li>
+                        </ul>
+                      </li>
                     </ul>';
                             echo ' <a href="https://line.me/ti/p/Zu9X_iijE-">
                             <img src="image/line.png" width="30" style="margin-right: 5px;" alt="Line">

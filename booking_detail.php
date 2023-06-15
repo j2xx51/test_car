@@ -53,7 +53,7 @@
                         <div class="col-lg-7 col-md-7 col-sm-6">
 
                             <h4 class="box-title mt-5">รายละเอียดการจอง</h4>
-                        
+
 
                             <?php if ($row['b_status'] == 'เช่าขับเอง') : ?>
                                 <p class="text-primary"> <?php echo 'เลือกการจอง:' . $row['b_status'] ?></p>
@@ -76,7 +76,7 @@
                             </h2>
 
                         </div>
-                       
+
 
                         <h3 class="box-title mt-5">บันทึกสถานะ</h3>
                         <div class="card p-3 " style="box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;">
@@ -86,9 +86,10 @@
                                     <select class="form-select" aria-label="Default select example" name="status">
                                         <option selected>เลือกสถานะ</option>
                                         <option value="1">รอยืนยัน</option>
-                                        <option value="2">รอรับรถ</option>
+                                        <option value="2">รอแอดมิดมากดยืนยัน </option>
                                         <option value="3">เช่าอยู่</option>
-                                        <option value="4">สิ้นสุดการเช่า</option>
+                                        <option value="4">แอดมินเปลี่ยนสถานะ</option>
+                                        <option value="5">สิ้นสุดการเช่า</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
