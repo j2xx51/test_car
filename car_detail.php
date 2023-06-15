@@ -58,7 +58,7 @@
                                     <h4 class="mt-5">รายละเอียดรถ</h4>
                                     <p><?php echo $row['car_description'] ?></p>
                                     <h2 class="mt-5">
-                                        <small class="text-success"><?php echo $row['price'] ?></small> / ต่อวัน
+                                        <small class="text-success"><?php echo $row['price'] ?></small> / ต่อวัน (ขับเอง)
                                     </h2>
                                     <a class="btn "  style="background-color: #6699cc;" href="booking1.php?car_id=<?php echo $car_id; ?>&bookings_type=1" role="button">เช่าขับเอง</a>
 

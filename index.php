@@ -14,9 +14,9 @@
 
 </head>
 </head>
-
+<?php include 'navbar.php'; ?>
 <body style="background-color: #EBEDF3;">
-    <?php include 'navbar.php'; ?>
+    
     <div>
         <div class="p-2" style="font-family: 'Sarabun', sans-serif;">
 

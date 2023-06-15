@@ -36,7 +36,7 @@
 
         $errors = array();
 
-        if (empty($customerName) || empty($phoneNumber) || empty($travelDate) || empty($travelTime) || empty($pickupLocation) || empty($destinationProvince) || empty($passengerCount)  || empty($passengerCount)  || empty($lineId) ) {
+        if (empty($customerName) || empty($phoneNumber) || empty($travelDate) || empty($travelTime) || empty($pickupLocation) || empty($destinationProvince) || empty($passengerCount)  || empty($passengerCount)   ) {
             $errors[] = "กรุณากรอกข้อมูลให้ครบ";
         }
 
@@ -124,7 +124,7 @@
   <div class='card-body'>
   <h5 class='card-title'>คุณลูกค้า : $customerName </h5>
   <p class='card-text'>ทำการจองรถ $carBrand $carModel <br> สถานที่นัดรับ: $pickupLocation เดินทางวันที่ $travelDate  $travelTime <br>เพื่อเดินทางไปยัง $destinationProvince เป็นจำนวน $numDays วัน </p>
-  <p class='card-text'><small class='text-muted'>ราคา:$price /ต่อวัน จำนวน:$numDays วัน </small>  รวมราคาทั้งหมด:$price_c</p>
+  <p class='card-text text-danger'>**ราคารอยืนยันจากบริษัท**</p>
   </div>
 </div>
                        
@@ -165,45 +165,45 @@
 
     <h1 class="font-weight-light">บริษัท รถเช่าพร้อมคนขับ อยุธยา (Private Car Rent) จำกัด</h1>
     <p>"เปิดประสบการณ์ใหม่กับบริการรถเช่าพร้อมคนขับอยุธยา ที่จะทำให้คุณเดินทางไปถึงจุดหมายด้วยความสะดวกสบายและความปลอดภัยที่ไม่เคยมีมาก่อน ร่วมกับ Private Car Rent และสัมผัสประสบการณ์ที่ดีที่สุดในการเดินทางของคุณ"</p>
-    <h4 class="font-weight-light">บริการ: เช่าพร้อมคนขับ</h4>
+    <h4 class="font-weight-light">บริการ: เช่าพร้อมคนขับ <span class="text-danger">**ราคารอยืนยันจากบริษัท**</span></h4>
     <form action="" method="POST" enctype="multipart/form-data" class="container mt-4 " style="border-radius: 6px; background-color: #bdbdbd;">
         <div class="mb-3">
-            <label class="form-label" for="customer_name">ชื่อลูกค้า:</label>
-            <input type="text" name="customer_name" class="form-control" required>
+            <label class="form-label" for="customer_name">ชื่อ-นามสกุล:</label>
+            <input type="text" name="customer_name" class="form-control" >
         </div>
         <div class="mb-3">
             <label class="form-label" for="phone_number">เบอร์โทรศัพท์:</label>
-            <input type="tel" name="phone_number" class="form-control" required>
+            <input type="tel" name="phone_number" class="form-control" >
         </div>
         <div class="mb-3">
-            <label class="form-label" for="line_id">LINE id:</label>
-            <input type="text" name="line_id" class="form-control" required>
+            <label class="form-label" for="line_id">LINE id (ถ้ามี):</label>
+            <input type="text" name="line_id" class="form-control" >
         </div>
         <div class="mb-3">
             <label class="form-label" for="destination_province">จังหวัดที่ต้องการเดินทาง:</label>
-            <input type="text" name="destination_province" class="form-control" required>
+            <input type="text" name="destination_province" class="form-control" >
         </div>
         <div class="mb-3">
             <label class="form-label" for="pickup_location">จุดนัดรับ:</label>
-            <input type="text" name="pickup_location" class="form-control" required>
+            <input type="text" name="pickup_location" class="form-control" >
         </div>
 
         <div class="col mb-3">
             <label class="form-label" for="travel_date">วันที่เดินทาง:</label>
-            <input type="date" name="travel_date" class="form-control" required>
+            <input type="date" name="travel_date" class="form-control" >
         </div>
         <div class="col mb-3">
             <label class="form-label" for="travel_date_time">เวลานัดรับ:</label>
-            <input type="time" name="travel_date_time" class="form-control" required>
+            <input type="time" name="travel_date_time" class="form-control" >
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="num_days">จำนวนวันเช่า:</label>
-            <input type="number" name="num_days" class="form-control" required>
+            <input type="number" name="num_days" class="form-control" >
         </div>
         <div class="mb-3">
             <label class="form-label" for="passenger_count">จำนวนคน:</label>
-            <input type="number" name="passenger_count" class="form-control" required>
+            <input type="number" name="passenger_count" class="form-control" >
         </div>
         <div class="">
             <label class="form-label" for="car_id"></label>

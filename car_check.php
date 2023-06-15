@@ -18,7 +18,7 @@
   <?php include 'navbar.php'; ?>
   <div class="container py-2">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <a class="btn "  style="background-color: #6699cc;" href="car_search.php">ค้นหารายการเช่ารถ</a>
+      <a class="btn " style="background-color: #6699cc;" href="car_search.php">ค้นหารายการเช่ารถ</a>
 
     </div>
 
@@ -122,7 +122,7 @@
               $sql = "DELETE FROM bookings WHERE id = $bookings_id";
               if ($conn->query($sql) === TRUE) {
                 echo "<div class='alert alert-danger' role='alert'>
-                                    ลบข้อมูลเรียบร้อย
+                                    ลบข้อมูลเรียบร้อย <a href='car_check.php'>รีเฟรชข้อมูลใหม่</a>
                                   </div>";
               } else {
                 echo "เกิดข้อผิดพลาดในการลบข้อมูลในตาราง booking: ";
@@ -204,7 +204,7 @@
                 if ($prepareCarRentalStmt) {
                   mysqli_stmt_bind_param($carRentalStmt, "issis", $bookingID, $customerName, $carID, $status, $currentDateTime);
                   mysqli_stmt_execute($carRentalStmt);
-                  echo "<div class='alert alert-success'>เพิ่มข้อมูลสำเร็จ</div>";
+                  echo "<div class='alert alert-success'>เพิ่มข้อมูลสำเร็จ <a href='car_check.php'>รีเฟรชข้อมูลใหม่</a></div>";
                 } else {
                   echo "เกิดข้อผิดพลาดในการเพิ่มข้อมูล: " . mysqli_error($conn);
                 }
@@ -256,15 +256,73 @@
                                 <input type="hidden" name="car_id" value="' . $row['car_id'] . '">
                                 <input type="hidden" name="status_car" value="' . $row['status_car'] . '">';
                 if ($status_car == 'Ready') {
-                  echo '<button type="submit" class="btn btn-warning" name="complete_status">เปลียนสถานะ</button>';
+                  echo '<button type="submit" class="btn btn-warning" name="complete_status">ปิดจอง</button>';
                 } else {
-                  echo '<button type="submit" class="btn btn-outline-warning" name="complete_status">เปลียนสถานะ</button>';
+                  echo '<button type="submit" class="btn btn-outline-warning" name="complete_status">เปิดจอง</button>';
                 }
                 echo '</form>
+
                         </td>';
+                echo '<td>
+                <div class="d-grid gap-2 d-md-flex">
+                        <a class="btn btn-sm btn-warning me-md-2" href="car_update.php?car_id=' . $row['car_id'] . '">แก้ไข</a>
+                        <form action="" method="POST">
+                          <input type="hidden" name="car_id" value="' . $row['car_id'] . '">
+                          <button class="btn btn-sm btn-warning" type="submit" name="delete_car" value="Submit">ลบ</button>
+                        </form>
+                        </div>
+                      </td>';
+
+
 
                 echo '</tr>';
               }
+              if (isset($_POST['delete_car'])) {
+                $car_id = $_POST['car_id'];
+            
+                // ลบข้อมูลในตาราง car_rental
+                $sql_car_rental = "DELETE FROM car_rental WHERE car_id = ?";
+                $stmt_car_rental = $conn->prepare($sql_car_rental);
+                $stmt_car_rental->bind_param("i", $car_id);
+                if ($stmt_car_rental->execute()) {
+                    echo "";
+                } else {
+                    echo "เกิดข้อผิดพลาดในการลบข้อมูลในตาราง car_rental: " . $stmt_car_rental->error;
+                }
+            
+                // ลบข้อมูลในตาราง bookings
+                $sql_bookings = "DELETE FROM bookings WHERE car_id = ?";
+                $stmt_bookings = $conn->prepare($sql_bookings);
+                $stmt_bookings->bind_param("i", $car_id);
+                if ($stmt_bookings->execute()) {
+                    echo "";
+                } else {
+                    echo "เกิดข้อผิดพลาดในการลบข้อมูลในตาราง bookings: " . $stmt_bookings->error;
+                }
+            
+                // ลบข้อมูลในตาราง images
+                $sql_images = "DELETE FROM images WHERE car_id = ?";
+                $stmt_images = $conn->prepare($sql_images);
+                $stmt_images->bind_param("i", $car_id);
+                if ($stmt_images->execute()) {
+                    echo "";
+                } else {
+                    echo "เกิดข้อผิดพลาดในการลบข้อมูลในตาราง images: " . $stmt_images->error;
+                }
+            
+                // ลบข้อมูลในตาราง cars
+                $sql_cars = "DELETE FROM cars WHERE car_id = ?";
+                $stmt_cars = $conn->prepare($sql_cars);
+                $stmt_cars->bind_param("i", $car_id);
+                if ($stmt_cars->execute()) {
+                    echo "";
+                } else {
+                    echo "เกิดข้อผิดพลาดในการลบข้อมูลในตาราง cars: " . $stmt_cars->error;
+                }
+                echo "<div class='alert alert-danger' role='alert'>ลบทั้งหมดเรียบร้อย <a href='car_check.php'>รีเฟรชข้อมูลใหม่</a></div>";
+            }
+            
+            
 
               if (isset($_POST["complete_status"])) {
                 $carID = $_POST["car_id"];
@@ -278,9 +336,9 @@
 
                 // ดำเนินการอัปเดต
                 if (mysqli_query($conn, $sqlUpdate)) {
-                  echo '<div class="alert alert-success">อัปเดตสถานะเรียบร้อยแล้ว</div>';
+                  echo '<div class="alert alert-success">อัปเดตสถานะเรียบร้อยแล้ว<a href="car_check.php"> รีเฟรชข้อมูลใหม่</a></div>';
                 } else {
-                  echo '<div class="alert alert-danger">เกิดข้อผิดพลาดในการอัปเดตสถานะ</div>';
+                  echo '<div class="alert alert-danger">เกิดข้อผิดพลาดในการอัปเดตสถานะ<a href="car_check.php"> รีเฟรชข้อมูลใหม่</a></div>';
                 }
               }
             } else {

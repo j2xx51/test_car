@@ -82,7 +82,7 @@
                                             <!-- Product name-->
                                             <h5 class="fw-bolder"><?php echo $car_brand, $car_model; ?></h5>
                                             <!-- Product price-->
-                                            <?php echo $price; ?>
+                                             <p>ราคา  <?php echo $price; ?> บาท/ต่อวัน</p>
                                         </div>
                                     </div>
                                     <!-- Product actions-->

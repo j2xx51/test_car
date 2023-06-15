@@ -56,12 +56,14 @@
                         
 
                             <?php if ($row['b_status'] == 'เช่าขับเอง') : ?>
+                                <p class="text-primary"> <?php echo 'เลือกการจอง:' . $row['b_status'] ?></p>
                                 <p>
-                                    <?php echo 'เลือกการจอง:' . $row['b_status'] . '<br>' . $row['car_brand'] . ' ' . $row['car_model'] . '<br>สถานที่รับรถ:' . $row['pickup_location'] . '<br> สถานที่คืนรถ: ' . $row['return_location'] . ' <br>ปลายทาง: ' . $row['destination_province'] . '<br>เดินทางวันที่ ' . $row['travel_date'] . ' -> ' . $row['return_date'] . '<br>เป็นจำนวน ' . $row['num_days'] . ' วัน'; ?>
+                                    <?php echo  $row['car_brand'] . ' ' . $row['car_model'] . '<br>สถานที่รับรถ:' . $row['pickup_location'] . '<br> สถานที่คืนรถ: ' . $row['return_location'] . ' <br>ปลายทาง: ' . $row['destination_province'] . '<br>เดินทางวันที่ ' . $row['travel_date'] . ' -> ' . $row['return_date'] . '<br>เป็นจำนวน ' . $row['num_days'] . ' วัน'; ?>
                                 </p>
                             <?php elseif ($row['b_status'] == 'เช่าพร้อมคนขับ') : ?>
+                                <p class="text-danger"> <?php echo 'เลือกการจอง:' . $row['b_status'] ?></p>
                                 <p>
-                                    <?php echo 'เลือกการจอง:' . $row['b_status'] . '<br>' . $row['car_brand'] . ' ' . $row['car_model'] . '<br>สถานที่นัดรับ:' . $row['pickup_location'] . '<br>เดินทางวันที่ :' . $row['travel_date'] . ' เวลา ' . $row['travel_time'] . '<br>เพื่อเดินทางไปยัง :' . $row['destination_province'] . '<br>เป็นจำนวน ' . $row['num_days'] . ' วัน'; ?>
+                                    <?php echo $row['car_brand'] . ' ' . $row['car_model'] . '<br>สถานที่นัดรับ:' . $row['pickup_location'] . '<br>เดินทางวันที่ :' . $row['travel_date'] . ' เวลา ' . $row['travel_time'] . '<br>เพื่อเดินทางไปยัง :' . $row['destination_province'] . '<br>เป็นจำนวน ' . $row['num_days'] . ' วัน'; ?>
                                 </p>
                             <?php endif; ?>
                             <ul class="list-unstyled">

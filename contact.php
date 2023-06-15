@@ -103,7 +103,7 @@
                                 <p>ไม่ต้องใช้เครดิต ใครก็เช่าได้</p>
                             </blockquote>
                             <figcaption class="blockquote-footer">
-                                <p class="text-center">จองง่าย สะอาดรวดเร็ว ตรงเวลา รถสะอาด พนักงานสุภาพ บริการประทับใจ</p>
+                                <p class="text-center">จองง่าย สะดวกรวดเร็ว ตรงเวลา รถสะอาด พนักงานสุภาพ บริการประทับใจ</p>
                             </figcaption>
                         </figure>
                     </div>
@@ -135,8 +135,8 @@
                                                 <img src="image/call.png" width="30" alt="Call">
                                             </a>
                                             <a href="https://www.facebook.com/CarRentCarNong"> <img src="image/facebook.png" width="30"></a>
-                                            <a href="https://line.me/ti/p/Zu9X_iijE-"> <img src="image/line.png." width="30"></a>
-                                            <a href="https://goo.gl/maps/4nnYCtg8kAPzQacn8" target="_blank"><img src="image/maps.png." width="30"></a>
+                                            <a href="https://line.me/ti/p/Zu9X_iijE-"> <img src="image/line.png" width="30"></a>
+                                            <a href="https://goo.gl/maps/4nnYCtg8kAPzQacn8" target="_blank"><img src="image/maps.png" width="30"></a>
                                         </figcaption>
                                     </figure>
                                 </div>

@@ -19,23 +19,7 @@
 
         <section class="member-details">
             <div class="container mt-2">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4">
-                        <div class="img-container">
-                            <img src="image/A (1).jpg" width="310" alt="team member" class="img-full">
-                            <img src="image/A (2).jpg" width="310" alt="team member" class="img-full">
-                            <img src="image/A (3).jpg" width="310" alt="team member" class="img-full">
-                            <img src="image/A (4).jpg" width="310" alt="team member" class="img-full">
-                            <img src="image/A (5).jpg" width="310" alt="team member" class="img-full">
-                            <img src="image/A (6).jpg" width="310" alt="team member" class="img-full">
-                            <img src="image/A (7).jpg" width="310" alt="team member" class="img-full">
-                            <img src="image/A (8).jpg" width="310" alt="team member" class="img-full">
-                           
-
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-8">
-                        <div class="member_designation">
+            <div class="member_designation">
                             <h2><strong>บริษัท รถเช่าพร้อมคนขับ อยุธยา (Private Car Rent) จำกัด</strong></h2>
                             <h5><strong>บริการเช่ารถพร้อมคนขับ ที่คุณสามารถเชื่อถือได้ในอยุธยา</strong></h5>
 
@@ -49,6 +33,23 @@
 
                         </div>
                         <hr>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4">
+                        <div class="img-container">
+                            <img src="image/A (1).jpg" width="310" alt="team member" class="img-full">
+                            <img src="image/A (2).jpg" width="310" alt="team member" class="img-full">
+                            <img src="image/A (3).jpg" width="310" alt="team member" class="img-full">
+                            <img src="image/A (4).jpg" width="310" alt="team member" class="img-full">
+                            <img src="image/A (5).jpg" width="310" alt="team member" class="img-full">
+                        
+                            <img src="image/A (7).jpg" width="310" alt="team member" class="img-full">
+                            <img src="image/A (8).jpg" width="310" alt="team member" class="img-full">
+                           
+
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8">
+                       
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -65,6 +66,24 @@
                                             <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> สำเนาบัตรประชาชน (ต้องไม่หมดอายุ)</li>
                                             <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>สำเนาใบขับขี่รถยนต์ (ต้องไม่หมดอายุ)</li>
                                             <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> สำเนาสลิปเงินเดือน และสำเนาบัตรพนักงาน</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading0">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0" aria-expanded="false" aria-controls="collapse0">
+                                        <h6> ข้อกำหนดและเงื่อนไขการเช่ารถ(ขับเอง)</h6>
+                                    </button>
+                                </h2>
+                                <div id="collapse0" class="accordion-collapse collapse" aria-labelledby="heading0" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      
+                                        <ul class="">
+                                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>ห้ามสูบบุหรี่ในรถเด็ดขาด ฝ่าฝืนปรับ 3,000 บาท</li>
+                                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>ห้ามนำสัตว์เลี้ยงขึ้นรถเด็ดขาด ฝ่าฝืนปรับ 1,500 ถึง 3,000 บาท</li>
+                                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> ล้างทำความสะอาดก่อนคืนรถลูกค้าจะต้องทำความสะอาดทั้งภายนอกและภายในของรถก่อนนำมาคืนทางบริษัท ถ้าลูกค้าไม่สะดวกล้างคืนบริษัทจะหักค่าล้างทำความสะอาดจากเงินค่าประกันของลูกค้า</li>
+
                                         </ul>
                                     </div>
                                 </div>

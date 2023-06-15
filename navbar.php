@@ -13,7 +13,7 @@
 
 <body>
     <div style="font-family: 'Sarabun', sans-serif;">
-        <nav class="navbar navbar-expand-md navbar-dark "  style="background-color: #6699cc ;">
+        <nav class="navbar navbar-expand-md navbar-dark " style="background-color: #6699cc ;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">
                     <img width="100%" height="70" src="image/Corvette-logo.png" alt="Navbar Logo">
@@ -64,17 +64,10 @@
                     ';
                         }
                         ?>
-
                 </div>
             </div>
         </nav>
-
-
-
-
-
     </div>
-
 </body>
 
 </html>

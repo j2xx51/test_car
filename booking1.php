@@ -36,7 +36,7 @@
 
         $errors = array();
 
-        if (empty($customerName) || empty($phoneNumber) ||empty($lineId) || empty($travelDate) || empty($returnDate) || empty($pickupLocation) || empty($destinationProvince) || empty($returnLocation)) {
+        if (empty($customerName) || empty($phoneNumber) || empty($travelDate) || empty($returnDate) || empty($pickupLocation) || empty($destinationProvince) || empty($returnLocation)) {
             $errors[] = "กรุณากรอกข้อมูลให้ครบ";
         }
 
@@ -170,7 +170,7 @@
     <h4 class="font-weight-light">บริการ: เช่าขับเอง</h4>
     <form action="" method="POST" enctype="multipart/form-data" class="container mt-4 " style="border-radius: 6px; background-color: #bdbdbd;">
         <div class="mb-3">
-            <label class="form-label" for="customer_name">ชื่อลูกค้า:</label>
+            <label class="form-label" for="customer_name">ชื่อ-นามสกุล:</label>
             <input type="text" name="customer_name" class="form-control">
         </div>
         <div class="mb-3">
@@ -178,7 +178,7 @@
             <input type="tel" name="phone_number" class="form-control">
         </div>
         <div class="mb-3">
-            <label class="form-label" for="line_id">LINE id:</label>
+            <label class="form-label" for="line_id">LINE id (ถ้ามี):</label>
             <input type="text" name="line_id" class="form-control">
         </div>
         <div class="row">
