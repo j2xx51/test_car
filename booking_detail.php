@@ -40,6 +40,7 @@
             // ดึงข้อมูลรถ
             $row = mysqli_fetch_assoc($result);
     ?><div class="card">
+              
                 <div class="card-body">
                     <h3 class="card-subtitle"><?php echo $row['customer_name'] ?></h3>
                     <h6 class="card-subtitle"><?php echo $row['car_brand'] . ' ' . $row['car_model'] ?></h6>
@@ -88,15 +89,13 @@
                         <h3 class="box-title mt-5">บันทึกสถานะ</h3>
                         <div class="card p-3 " style="box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;">
 
-                            <form id="myForm" method="post" action="">
+                            <form actions="car_check.php" id="myForm" method="post" action="">
                                 <div class="mb-3">
                                     <select class="form-select" aria-label="Default select example" name="status">
                                         <option selected>เลือกสถานะ</option>
                                         <option value="1">รอยืนยัน</option>
-                                        <option value="2">รอแอดมิดมากดยืนยัน </option>
-                                        <option value="3">เช่าอยู่</option>
-                                        <option value="4">แอดมินเปลี่ยนสถานะ</option>
-                                        <option value="5">สิ้นสุดการเช่า</option>
+                                        <option value="2">เช่าอยู่ </option>
+                                        <option value="3">สิ้นสุดการเช่า </option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -106,9 +105,10 @@
                                 <input type="hidden" name="bookingID" value="<?php echo $row['bookings_id'] ?>">
                                 <input type="hidden" name="carID" value="<?php echo $row['car_id'] ?>">
                                 <input type="hidden" name="customerName" value="<?php echo $row['customer_name'] ?>">
-                                <div class="d-grid gap-2 col-6 mx-auto">
+                                <div class="d-grid gap-2 d-md-block">
 
                                     <button class="btn btn-primary" type="submit" name="submit" value="Submit">บันทึกสถานะ</button>
+                                    <a class="btn btn-outline-primary" href="car_check.php">หน้าสะสม</a>
                                 </div>
 
                             </form>
@@ -133,6 +133,7 @@
                                     mysqli_stmt_bind_param($carRentalStmt, "ississ", $bookingID, $customerName, $carID, $status, $currentDateTime, $note);
                                     mysqli_stmt_execute($carRentalStmt);
                                     echo "<div class='alert alert-success'>เพิ่มข้อมูลสำเร็จ</div>";
+                                     
 
                                     // อัปเดตสถานะการจองรถในตาราง "bookings"
                                     $updateBookingSql = "UPDATE bookings SET status_rental = ? WHERE id = ?";
@@ -142,6 +143,7 @@
                                     if ($prepareUpdateBookingStmt) {
                                         mysqli_stmt_bind_param($updateBookingStmt, "si", $status, $bookingID);
                                         mysqli_stmt_execute($updateBookingStmt);
+                                       
                                     } else {
                                         echo "เกิดข้อผิดพลาดในการอัปเดตสถานะการจองรถ: " . mysqli_error($conn);
                                     }
@@ -181,12 +183,8 @@
                                                     if ($status == "1") {
                                                         echo "<p class='text-success '>รอยืนยัน</p>";
                                                     } elseif ($status == "2") {
-                                                        echo "<p class='text-success '>รอแอดมิดมากดยืนยัน</p>";
-                                                    } elseif ($status == "3") {
                                                         echo "<p class='text-success '>เช่าอยู่</p>";
-                                                    } elseif ($status == "4") {
-                                                        echo "<p class='text-success '>แอดมินเปลี่ยนสถานะ</p>";
-                                                    } elseif ($status == "5") {
+                                                    } elseif ($status == "3") {
                                                         echo "<p class='text-success '>สิ้นสุดการเช่า</p>";
                                                     }
                                                     ?><br>

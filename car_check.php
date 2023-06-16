@@ -67,12 +67,8 @@
               if ($status_rental == 1) {
                 echo '<span class="badge text-bg-warning ">รอยืนยัน</span>';
               } elseif ($status_rental == 2) {
-                echo '<span class="badge text-bg-info ">รอแอดมิดมากดยืนยัน</span>';
+                echo '<span class="badge text-bg-info ">เช่าอยู่</span>';
               } elseif ($status_rental == 3) {
-                echo '<span class="badge text-bg-success">เช่าอยู่</span>';
-              }elseif ($status_rental == 4) {
-                echo '<span class="badge text-bg-primary">แอดมินเปลี่ยนสถานะ</span>';
-              }elseif ($status_rental == 5) {
                 echo '<span class="badge text-bg-dark">สิ้นสุดการเช่า</span>';
               }  else {
                 echo 'รอยืนยัน <span class="badge text-bg-warning"> ใหม่</span>';
